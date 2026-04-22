@@ -1,5 +1,24 @@
-📊 NSE Point & Figure (PnF) Chart GeneratorA high-performance Python engine designed to generate Point and Figure (PnF) charts for the National Stock Exchange (NSE). This tool bridges the gap between raw market data and actionable technical analysis by exporting a "square-grid" Excel visualization optimized for trend spotting.🚀 Key HighlightsDynamic High-Density Plotting: Uses 0.5% price-based box sizing to ensure detailed, granular columns (more detail than standard ATR charts).High-Low Sensitivity: Implements the High-Low method to capture intraday volatility and true trend reversals.Automated Signal Engine: Built-in logic to identify Double Top Buy and Double Bottom Sell breakouts.Precision Formatting: Automatically resizes Excel columns to a 3.0 width for that classic "grid" look.Zero-Config Data: Fetches 1 year of historical data automatically via yfinance.🛠️ Installation & SetupClone the RepositoryBashgit clone https://github.com/YOUR_USERNAME/PnF-Chart-Generator.git
-cd PnF-Chart-Generator
-Install DependenciesBashpip install yfinance pandas numpy openpyxl
-Run the GeneratorBashpython pnf_generator.py
-📈 Prediction LogicThe generator doesn't just draw; it thinks. It evaluates the structure of the X and O columns to provide:SignalLogicInterpretationBullish BreakoutCurrent 'X' column exceeds the height of the previous 'X' column.Strong Buy (Double Top)Bearish BreakdownCurrent 'O' column falls below the low of the previous 'O' column.Strong Sell (Double Bottom)Trend ContinuationPrice is moving within the current column without a breakout.Hold Position📁 Output StructureWhen you run the script, it generates a .xlsx file formatted as follows:Rows 1-10: Metadata (Scrip Name, Box Size, Current Close, and Prediction).Column A: Price Axis (Descending order).Grid: The X and O matrix.Footer: Reversal dates for each specific column.🤝 ContributingContributions make the open-source community an amazing place to learn and create.Fork the ProjectCreate your Feature Branch (git checkout -b feature/AmazingFeature)Commit your Changes (git commit -m 'Add AmazingFeature')Push to the Branch (git push origin feature/AmazingFeature)Open a Pull Request📜 LicenseDistributed under the MIT License. See LICENSE for more information.💡 Why PnF?Unlike Bar or Candlestick charts, Point and Figure ignores time and focuses solely on price movement. This filters out the "noise" of the market, making it easier to identify significant support and resistance levels.
+# 📊 NSE Point & Figure (PnF) Chart Generator
+
+![Status](https://img.shields.io/badge/status-active-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+A high-density **Point and Figure (PnF)** charting engine for NSE stocks. This tool automates the process of fetching market data, calculating volatility-adjusted price levels, and generating a professional, grid-formatted Excel report with trend predictions.
+
+---
+
+## 🔥 Key Features
+
+* **ATR & Percentage Scaling**: Automatically adjusts box sizes based on stock price and volatility.
+* **High-Low Sensitivity**: Uses daily extremes to capture true trend reversals.
+* **Automated Signals**: Built-in logic to detect **Double Top Buy** and **Double Bottom Sell** breakouts.
+* **Professional Output**: Generates Excel files with a 3.0 "Square-Grid" column width for a classic PnF look.
+
+---
+
+## 🛠️ How to Use (Step-by-Step)
+
+### 1. Install Requirements
+You need Python installed. Run this command in your terminal/command prompt to install the necessary libraries:
+```bash
+pip install yfinance pandas numpy openpyxl
