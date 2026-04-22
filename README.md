@@ -65,7 +65,7 @@ pip install yfinance pandas numpy openpyxl
     Bash
     
     ```
-    python PnF.py
+    python pnf.py
     
     ```
     
