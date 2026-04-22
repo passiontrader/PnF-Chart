@@ -56,7 +56,7 @@ pip install yfinance pandas numpy openpyxl
     Bash
     
     ```
-    git clone https://github.com/YOUR_USERNAME/PnF-Chart-Generator.git
+    git clone https://github.com/passiontrader/PnF-Chart.git
     
     ```
     
