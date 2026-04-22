@@ -1,66 +1,88 @@
-# 📊 NSE Point & Figure (PnF) Chart Generator
+# NSE Point & Figure (PnF) Chart Generator
 
-![Status](https://img.shields.io/badge/status-active-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
+A professional-grade Python tool designed to generate high-density Point and Figure (PnF) charts for National Stock Exchange (NSE) stocks. This tool fetches real-time data, calculates volatility-adjusted box sizes, and exports a perfectly formatted "square-grid" Excel chart complete with trend predictions and breakout signals.
 
-A high-density **Point and Figure (PnF)** charting engine for NSE stocks. This tool automates the process of fetching market data, calculating volatility-adjusted price levels, and generating a professional, grid-formatted Excel report with trend predictions.
+## ✨ Features
 
----
+-   **Dynamic Data Fetching:** Integrates with `yfinance` to pull the latest daily High-Low-Close data for any NSE ticker.
+    
+-   **Volatility-Based Scaling:** Uses **Average True Range (ATR)** or **Percentage-based** logic to define box sizes, ensuring the chart scales correctly to the stock's specific price and volatility.
+    
+-   **High-Density Plotting:** Optimized to produce detailed charts (similar to professional platforms like Dhelm) by using granular price levels.
+    
+-   **Professional Excel Output:** * **Square-Grid Look:** Automatically adjusts Excel column widths to create a compact, readable PnF grid.
+    
+    -   **Metadata Header:** Includes Scrip name, Box size, Reversal settings, and current Close price.
+        
+    -   **Timeline:** Dates are automatically mapped to the bottom of each column for easy historical reference.
+        
+-   **Advanced Prediction Logic:** * **Trend Identification:** Labels current sentiment as Bullish (X) or Bearish (O).
+    
+    -   **Breakout Signals:** Identifies **Double Top Buy** and **Double Bottom Sell** signals by comparing current price action against previous columns.
+        
 
-## 🔥 Key Features
+## 🛠️ How It Works
 
-* **ATR & Percentage Scaling**: Automatically adjusts box sizes based on stock price and volatility.
-* **High-Low Sensitivity**: Uses daily extremes to capture true trend reversals.
-* **Automated Signals**: Built-in logic to detect **Double Top Buy** and **Double Bottom Sell** breakouts.
-* **Professional Output**: Generates Excel files with a 3.0 "Square-Grid" column width for a classic PnF look.
+### 1. The PnF Logic
 
----
+The script uses the standard **3-Box Reversal** method. It employs the **High-Low method** for price updates, which is more sensitive to intraday volatility than the "Close" method, making it superior for identifying true trend reversals.
 
-## 🛠️ How to Use (Step-by-Step)
+### 2. Trend Prediction
 
-### 1. Install Requirements
-You need Python installed. Run this command in your terminal/command prompt to install the necessary libraries:
-```bash
+-   **Double Top Buy:** Triggered when a column of 'X' exceeds the height of the previous 'X' column.
+    
+-   **Double Bottom Sell:** Triggered when a column of 'O' falls below the low of the previous 'O' column.
+    
+
+![](https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQJahE1vdJRZgThJIIeHBDzkBAT8URvksOdqfmmo4c_JIc6lLIiwWUEHUjfYKrg0gqgAsOneB3G9Muya_9FEzX1EraagvBGFsFtrKZat3B2GpYRaXM)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure you have Python installed, then install the necessary dependencies:
+
+Bash
+
+```
 pip install yfinance pandas numpy openpyxl
-2. Install Dependencies
-pip install yfinance pandas numpy openpyxl
-3. Run the Generator
-python pnf_generator.py
-📈 Prediction Logic
 
-The generator doesn't just draw — it thinks. It evaluates the structure of the X and O columns to provide actionable signals:
+```
 
-Signal	Logic	Interpretation
-Bullish Breakout	Current 'X' column exceeds the height of the previous 'X' column	Strong Buy (Double Top)
-Bearish Breakdown	Current 'O' column falls below the low of the previous 'O' column	Strong Sell (Double Bottom)
-Trend Continuation	Price moves within the current column without breakout	Hold Position
-📁 Output Structure
+### Installation
 
-When you run the script, it generates a .xlsx file formatted as follows:
+1.  Clone the repository:
+    
+    Bash
+    
+    ```
+    git clone https://github.com/YOUR_USERNAME/PnF-Chart-Generator.git
+    
+    ```
+    
+2.  Run the script:
+    
+    Bash
+    
+    ```
+    python pnf_generator.py
+    
+    ```
+    
+3.  Enter the NSE symbol when prompted (e.g., `HDFCBANK` or `SBIN`).
+    
 
-Rows 1–10: Metadata
-(Scrip Name, Box Size, Current Close, Prediction)
-Column A: Price Axis (Descending order)
-Grid: The X and O matrix
-Footer: Reversal dates for each specific column
-🤝 Contributing
+## 📊 Sample Output
 
-Contributions make the open-source community an amazing place to learn and create.
+The generated Excel file will contain:
 
-Fork the Project
+1.  **Summary Header:** Stock info and the current Buy/Sell signal.
+    
+2.  **PnF Grid:** A visual map of X's and O's with a price axis on the left.
+    
+3.  **Dates:** The exact date each column began.
+    
 
-Create your Feature Branch
+## 📝 License
 
-git checkout -b feature/AmazingFeature
-
-Commit your Changes
-
-git commit -m "Add AmazingFeature"
-
-Push to the Branch
-
-git push origin feature/AmazingFeature
-Open a Pull Request
-📜 License
-
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
